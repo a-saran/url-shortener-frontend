@@ -1,0 +1,88 @@
+.url-func-container {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .container {
+    width: 100%;
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  .url-container {
+    width: 80%;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+
+    .input {
+      padding: 14px 10px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: #285fe2;
+      font-weight: bold;
+      color: #fff;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      margin: auto;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+
+  }
+
+  .result-container {
+    width: 70%;
+    margin: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fff;
+
+    .long-url {
+      padding: 20px;
+      background: #ddd;
+
+      .value {
+        color: rgb(126, 126, 126);
+      }
+    }
+
+    .result {
+      min-height: 100px;
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .copy-btn {
+        padding: 8px;
+        background: #ddd;
+        border-radius: 6px;
+        width: 80px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+}

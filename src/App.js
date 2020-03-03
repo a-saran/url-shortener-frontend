@@ -1,10 +1,14 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 
-function App() {
+import Nav from './components/nav'
+import Content from './components/body'
+
+const App = () => {
   return (
     <div className="App">
-      url-shortner
+      <Nav />
+      <Content />
     </div>
   );
 }
