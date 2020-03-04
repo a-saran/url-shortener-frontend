@@ -4,6 +4,8 @@
 
   .left-container {
     width: 40%;
+    display: flex;
+    justify-content: center;
 
     img {
       margin-top: 60px;
@@ -16,5 +18,10 @@
   .right-container {
     width: 60%;
     margin-top: 50px;
+
+    .title {
+      text-align: center;
+      color: #000;
+    }
   }
 }

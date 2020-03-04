@@ -25,44 +25,118 @@
     margin: auto;
 
     .input {
-      padding: 14px 10px;
+      padding: 17px 15px;
       width: 100%;
       border: none;
-      border-radius: 8px;
+      border-radius: 30px;
       outline: none;
       border: 1px solid #ddd;
       box-sizing: border-box;
+      box-shadow: 0 0 5px 2px #888888;
+      font-size: 16px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      transition: all 0.7s ease;
+      &.error {
+        border: 1px solid red;
+      }
+
+      &.success {
+        border-radius: 30px;
+      }
     }
 
     .submit-btn {
+      box-sizing: border-box;
       width: 100%;
       background: #285fe2;
       font-weight: bold;
-      color: #fff;
       padding: 12px;
-      border-radius: 6px;
+      border-radius: 30px;
       border: none;
       outline: none;
       margin: auto;
-      margin-top: 10px;
       font-size: 16px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      text-align: center;
+      margin-top: 0;
+      transition: 0.5s all ease-in;
+
+      .text {
+        color: #fff;
+      }
+
+      &.hide {
+        margin-top: 10px;
+        border-radius: 30px;
+        height: 40px;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+
+        .text {
+          display: none;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 18px;
+          left: 12%;
+          right: 12%;
+          width: 76%;
+          height: 5px;
+          border-radius: 30%;
+          background: #0a1836;
+        }
+      }
     }
 
-
+    .error-container {
+      height: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+      color: red;
+      width: 100%;
+      text-align: center;
+      background: rgba(255, 0, 0, 0.281);
+      border-top: 0;
+      &.show {
+        border: 1px solid red;
+        padding: 3px;
+        transition: all 0.5s ease;
+        height: 100%;
+      }
+    }
   }
-
   .result-container {
-    width: 70%;
+    width: 58%;
     margin: auto;
-    border-radius: 8px;
-    border: 1px solid #ddd;
     background: #fff;
+    height: 0;
+    overflow: hidden;
+    // transition-delay: .9s;
+    // transition: height .6s ease;
+
+    &.show {
+      animation-delay: 0.9s;
+      animation: reveal 1s ease;
+      border-top: 2px dashed #6977bd;
+      border-bottom: 2px dashed #dcdcdc;
+      transition-delay: 0.9s;
+      height: 230px;
+      margin-top: -20px;
+      z-index: 5;
+      position: relative;
+    }
 
     .long-url {
       padding: 20px;
       background: #ddd;
 
       .value {
+        overflow-wrap: break-word;
         color: rgb(126, 126, 126);
       }
     }
@@ -85,4 +159,18 @@
     }
   }
 
+  @keyframes reveal {
+    from {
+      height: 0;
+    }
+    40% {
+      height: 130px;
+    }
+    70% {
+      height: 140px;
+    }
+    to {
+      height: 230px;
+    }
+  }
 }
