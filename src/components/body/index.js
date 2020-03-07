@@ -36,6 +36,8 @@ const Main = () => {
       <div className="right-container">
         <div className="title">
           <h1>Paste the URL to be shortened</h1>
+          <p>Build and protect your brand using powerful, recognizable short links.</p>
+          <p className='text-blue'>Sometimes it's better to be small</p>
         </div>
         <Url imgRenderer={imgToRender}/>
       </div>

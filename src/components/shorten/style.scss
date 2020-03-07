@@ -179,6 +179,12 @@
     }
   }
 
+  @media screen and (max-width: 425px) {
+    .url-container {
+      width: 100%;
+    }
+  }
+
   @keyframes reveal {
     0% {
       overflow: hidden;
