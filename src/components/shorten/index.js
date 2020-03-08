@@ -6,14 +6,12 @@ import "./style.scss";
 
 const Main = ({ imgRenderer }) => {
   const [value, setValue] = useState("");
-  const [valid, setValid] = useState(null);
   const [errorMsg, setErrorMsg] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
   const [data, setData] = useState(null);
 
   const onSubmit = () => {
     const isvalidUrl = isUrl(value);
-    setValid(isvalidUrl);
 
     if (!isvalidUrl) {
       setErrorMsg("please enter a valid url");
@@ -22,36 +20,36 @@ const Main = ({ imgRenderer }) => {
       imgRenderer("loading");
       setErrorMsg(null);
       setIsFetching(true);
-      // const url=`${process.env.REACT_APP_BASE_API_URL}/api/url/shorten`;
-      // axois.post(url, {
-      //   longUrl: value
-      // }, {
-      //   "Content-Type":"application/json"
-      // })
-      // .then(({data}) => {
-      //   imgRenderer('success')
-      //   setData(data)
-      //   setIsFetching(false);
-      //   console.log(data)
-      // })
-      // .catch(err=> {
-      //   console.log(err)
-      //   setIsFetching(false);
-      // })
-      setTimeout(() => {
-        const data = {
-          _id: "5e6330b9a7c5cc001788d1fa",
-          longUrl: "https://www.rafaelalucas.com/dailyui/17/",
-          shortUrl: "http://localhost:5000/09PnKj7d",
-          urlCode: "09PnKj7d",
-          date:
-            "Sat Mar 07 2020 05:27:21 GMT+0000 (Coordinated Universal Time)",
-          __v: 0
-        };
-        imgRenderer("success");
-        setData(data);
+      const url=`${process.env.REACT_APP_BASE_API_URL}/api/url/shorten`;
+      axois.post(url, {
+        longUrl: value
+      }, {
+        "Content-Type":"application/json"
+      })
+      .then(({data}) => {
+        imgRenderer('success')
+        setData(data)
         setIsFetching(false);
-      }, 1000);
+        console.log(data)
+      })
+      .catch(err=> {
+        console.log(err)
+        setIsFetching(false);
+      })
+      // setTimeout(() => {
+      //   const data = {
+      //     _id: "5e6330b9a7c5cc001788d1fa",
+      //     longUrl: "https://www.rafaelalucas.com/dailyui/17/",
+      //     shortUrl: "http://localhost:5000/09PnKj7d",
+      //     urlCode: "09PnKj7d",
+      //     date:
+      //       "Sat Mar 07 2020 05:27:21 GMT+0000 (Coordinated Universal Time)",
+      //     __v: 0
+      //   };
+      //   imgRenderer("success");
+      //   setData(data);
+      //   setIsFetching(false);
+      // }, 1000);
     }
   };
 
