@@ -13,13 +13,24 @@
     width: 40%;
     display: flex;
     justify-content: center;
+    transition: .5s all linear;
 
     img {
+      transition: .5s all linear;
       margin-top: 60px;
       width: 100%;
       height: 500px;
       width: 70%;
     }
+
+    .example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
   }
 
   .right-container {

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 import Url from '../shorten';
 
 import defaultImg from '../../assets/ques.png';
@@ -31,7 +32,7 @@ const Main = () => {
   return (
     <div className='main'>
       <div className="left-container">
-        <img src={img} alt="img"/>
+        <img src={img} alt="img" className='img-main'/>
       </div>
       <div className="right-container">
         <div className="title">
