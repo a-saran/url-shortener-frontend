@@ -94,9 +94,14 @@
     img.foot-img {
       width: 100%;
     }
+    .col-1,
+    .col-2,
+    .col-3 {
+      margin-top: 10px;
+    }
 
     .info {
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
   }
 }
