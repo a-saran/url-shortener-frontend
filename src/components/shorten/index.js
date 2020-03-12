@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState ,useRef} from "react";
 import isUrl from "is-url";
 import axois from "axios";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import "./style.scss";
 
@@ -9,12 +10,13 @@ const Main = ({ imgRenderer }) => {
   const [errorMsg, setErrorMsg] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
   const [data, setData] = useState(null);
+  const clipboardText = useRef(null);
 
   const onSubmit = () => {
     const isvalidUrl = isUrl(value);
 
     if (!isvalidUrl) {
-      setErrorMsg("please enter a valid url");
+      setErrorMsg("Please enter a valid URL");
       imgRenderer("error");
     } else {
       imgRenderer("loading");
@@ -36,33 +38,26 @@ const Main = ({ imgRenderer }) => {
         console.log(err)
         setIsFetching(false);
       })
-      // setTimeout(() => {
-      //   const data = {
-      //     _id: "5e6330b9a7c5cc001788d1fa",
-      //     longUrl: "https://www.rafaelalucas.com/dailyui/17/",
-      //     shortUrl: "http://localhost:5000/09PnKj7d",
-      //     urlCode: "09PnKj7d",
-      //     date:
-      //       "Sat Mar 07 2020 05:27:21 GMT+0000 (Coordinated Universal Time)",
-      //     __v: 0
-      //   };
-      //   imgRenderer("success");
-      //   setData(data);
-      //   setIsFetching(false);
-      // }, 1000);
+      setTimeout(() => {
+        const data = {
+          _id: "5e6330b9a7c5cc001788d1fa",
+          longUrl: "https://www.rafaelalucas.com/dailyui/17/",
+          shortUrl: "http://localhost:5000/09PnKj7d",
+          urlCode: "09PnKj7d",
+          date:
+            "Sat Mar 07 2020 05:27:21 GMT+0000 (Coordinated Universal Time)",
+          __v: 0
+        };
+        imgRenderer("success");
+        setData(data);
+        setIsFetching(false);
+      }, 1000);
     }
   };
 
   const handleChange = e => {
     const typedUrl = e.target.value;
     setValue(typedUrl);
-  };
-
-  const copyText = () => {
-    const { shortUrl } = data;
-    shortUrl.select();
-
-    document.execCommand("copy");
   };
 
   return (
@@ -88,9 +83,11 @@ const Main = ({ imgRenderer }) => {
           >
             <div
               className={`submit-btn ${data && !isFetching ? "hide" : ""}`}
-              onClick={onSubmit}
+              onClick={() =>data ? null : onSubmit()}
+              tabIndex='0'
+              onKeyDown={e => e.keyCode === 13 ? onSubmit() : null}
             >
-              <p className="text">Shorten URL</p>
+              <div className="text">Shorten URL</div>
             </div>
 
             <div className={`result-container ${data ? "show" : ""}`}>
@@ -100,11 +97,14 @@ const Main = ({ imgRenderer }) => {
                   {value.length < 100 ? value : value.slice(0, 100) + "..."}
                 </div>
               </div>
-              <div className="result">
-                {data && data.shortUrl}
-                <button className="copy-btn" onClick={copyText}>
-                  copy
+              <div className="result" >
+                <span ref={clipboardText}>{data && data.shortUrl}</span>
+                <CopyToClipboard text={data ? data.shortUrl : ''}
+                >
+                 <button className="copy-btn " >
+                    copy
                 </button>
+                </CopyToClipboard>
               </div>
             </div>
           </div>

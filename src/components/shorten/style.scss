@@ -69,7 +69,7 @@
       min-height: 300px;
       overflow: hidden;
       position: relative;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
 
       &.show {
         margin-top: 10px;
@@ -78,6 +78,21 @@
       .submit-btn {
         position: relative;
         cursor: pointer;
+        display: flex;
+        transition: background-color 0.2s ease;
+
+        &:focus,
+        &:hover {
+          outline: none;
+          &:before,
+          &:after {
+            background-color: #1a3a83;
+          }
+          .text {
+            border-bottom: 1px solid #fff;
+            padding-bottom: 5px;
+          }
+        }
 
         &:before,
         &:after {
@@ -100,23 +115,23 @@
 
         .text {
           color: #fff;
-          color: #fff;
           position: relative;
           z-index: 6;
-          display: inline-flex;
-          width: 100%;
-          justify-content: center;
+          display: inline-block;
+          margin: auto;
+          margin-top: 14px;
+          border-bottom: 1px solid transparent;
         }
 
         &.hide {
-          &:before{
+          &:before {
             z-index: 5;
             background-color: #0f1a35;
             border-radius: 40px 40px 0px 0px;
             -webkit-box-shadow: inset 0px 23px 0px #1e4bb5;
             box-shadow: inset 0px 23px 0px #1e4bb5;
           }
-          &:after{
+          &:after {
             background-color: #0f1a35;
             -webkit-box-shadow: inset 0px -23px 0px #1e4bb5;
             box-shadow: inset 0px -23px 0px #1e4bb5;
@@ -139,7 +154,8 @@
           animation: reveal 1.2s ease;
           border-top: 2px dashed #6977bd;
           border-bottom: 2px dashed #dcdcdc;
-          height: 230px;
+          min-height: 230px;
+          height: 250px;
           z-index: 4;
           position: absolute;
           top: 25px;
@@ -169,11 +185,43 @@
           flex-direction: column;
 
           .copy-btn {
-            padding: 8px;
-            background: #ddd;
-            border-radius: 6px;
+            padding: 10px;
+            background: rgba(221, 221, 221, 0.63);
             width: 80px;
             margin-top: 10px;
+            border: none;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            &::before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              right: 0;
+              left: 0;
+              height: 3px;
+              background: #1e4bb5;
+              transition: all 0.3s ease;
+            }
+            &:hover {
+              color: #fff;
+              &::before {
+                z-index: -1;
+                height: 100%;
+              }
+            }
+            &:active {
+              outline: none;
+              &::before {
+                z-index: -1;
+                height: 100%;
+                background: #749eff;
+              }
+            }
+            &:focus {
+              outline: none;
+            }
           }
         }
       }
@@ -183,6 +231,18 @@
   @media screen and (max-width: 425px) {
     .url-container {
       width: 100%;
+      .anime-container {
+        .result-container {
+          .long-url {
+            font-size: 12px;
+          }
+          .result {
+            span {
+              font-size: 12px;
+            }
+          }
+        }
+      }
     }
   }
 

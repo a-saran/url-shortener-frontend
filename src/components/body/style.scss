@@ -16,6 +16,7 @@
     transition: .5s all linear;
 
     img {
+      object-fit: contain;
       transition: .5s all linear;
       margin-top: 60px;
       width: 100%;
