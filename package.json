@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "is-url": "^1.2.4",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.0",
     "react-animate-on-change": "^2.2.0",
     "react-copy-to-clipboard": "^5.0.2",
